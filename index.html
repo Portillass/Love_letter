@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Letter</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Sofia&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</head>
+<body>
+    <div class="choice-container">
+        <h1>Will you be my girlfriend? ❤️</h1>
+        <div class="buttons">
+            <button class="yes-btn" onclick="showLetter()">Yes, I will! 💕</button>
+            <button class="no-btn" onmouseover="moveButton()" onclick="redirectNo()">No way 😅</button>
+        </div>
+    </div>
+
+    <div class="letter-content hidden">
+        <div class="envelop">
+            <div class="envelop__front-paper"></div>
+            <div class="envelop__back-paper"></div>
+            <div class="envelop__up-paper js-up-paper"></div>
+            <div class="envelop__sticker js-sticker"></div>
+            <div class="envelop__false-sticker"></div>
+            <div class="envelop__content js-envelop-content">
+                <div class="love-notes">
+                    <div class="note js-note">
+                        <div class="note__text">
+                            <p>
+                                Dear sweetheart, thank you for saying yes! ❤️ I've been wanting to ask you this for so long. You make my heart skip a beat every time I see you smile, and I can't imagine my days without you...
+                            </p>
+                        </div>
+                    </div>
+                    <div class="note js-note">
+                        <div class="note__text">
+                            <p>I promise to be the best boyfriend I can be. I'll be there for you through good times and bad, make you laugh when you're sad, and cherish every moment we spend together. You're not just my girlfriend now, you're my best friend too.</p>
+                        </div>
+                    </div>
+                    <div class="note js-note">
+                        <div class="note__text">
+                            <p>I'll do my best to make you happy every single day. I want to create beautiful memories with you, share adventures, and grow together. You're so special to me, and I'm the luckiest person because you chose to be mine.</p>
+                            <p>With all my love ❤️</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="celebration-container hidden">
+        <div class="flowers">
+            <div class="flower flower1">🌸</div>
+            <div class="flower flower2">🌺</div>
+            <div class="flower flower3">🌹</div>
+            <div class="flower flower4">🌷</div>
+            <div class="flower flower5">💐</div>
+        </div>
+        <div class="congrats-message">
+            <h2>Congratulations! 🎉</h2>
+            <p>You now have the most loving boyfriend! ❤️</p>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
+</body>
+</html>

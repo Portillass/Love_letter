@@ -1,0 +1,421 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media (max-height: 500px) {
+  body {
+    margin: 25% 0 25% 0;
+  }
+}
+
+.envelop {
+  width: min(15rem, 90vw);
+  height: min(10rem, 60vh);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+}
+@media (min-width: 400px) and (max-width: 600px) {
+  .envelop {
+    width: min(20rem, 90vw);
+    height: min(15rem, 70vh);
+  }
+}
+@media (min-width: 600px) {
+  .envelop {
+    width: min(25rem, 90vw);
+    height: min(20rem, 80vh);
+  }
+}
+.envelop__front-paper {
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  border-radius: 0.7rem;
+  border: 0.35rem solid #967b5c;
+  background-color: #ba9872;
+  clip-path: polygon(100% 0%, 50% 70%, 0% 0%, 0% 100%, 100% 100%);
+  z-index: 300;
+}
+.envelop__back-paper {
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  border-radius: 0.7rem;
+  background-color: #967b5c;
+  clip-path: polygon(0% 0%, 100% 0%, 90% 100%, 0% 90%);
+  z-index: 100;
+}
+.envelop__up-paper {
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  left: 0;
+  position: relative;
+  border-radius: 0.7rem;
+  background-color: #967b5c;
+  z-index: 400;
+  clip-path: polygon(0% 0%, 100% 0%, 50% 81%);
+}
+.envelop__sticker {
+  width: 100%;
+  height: 20%;
+  position: absolute;
+  margin: auto;
+  top: 30%;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 400;
+  background-image: url("https://www.freepnglogos.com/uploads/heart-png/emoji-heart-33.png");
+  background-color: #f9f9f9;
+  border: 0.3rem solid #e2e2e2;
+  background-size: 2rem;
+  background-position: center;
+}
+@media (max-width: 400px) {
+  .envelop__sticker {
+    background-size: 1.2rem;
+  }
+}
+@media (min-width: 600px) {
+  .envelop__sticker {
+    height: 15%;
+  }
+}
+.envelop__false-sticker {
+  width: 20%;
+  height: 20%;
+  position: absolute;
+  margin: auto;
+  top: 30%;
+  left: 80%;
+  bottom: 0;
+  right: 0;
+  z-index: 300;
+  background-image: url("https://www.freepnglogos.com/uploads/heart-png/emoji-heart-33.png");
+  background-color: #f9f9f9;
+  border: 0.3rem solid #e2e2e2;
+  background-size: 2rem;
+  background-position: center;
+}
+@media (max-width: 400px) {
+  .envelop__false-sticker {
+    background-size: 1.2rem;
+  }
+}
+@media (min-width: 600px) {
+  .envelop__false-sticker {
+    height: 15%;
+  }
+}
+.envelop__content {
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  z-index: 200;
+}
+
+.love-notes {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.note {
+  width: 95%;
+  height: 30%;
+  background-color: #f9f9f9;
+  position: absolute;
+  overflow: hidden;
+  transition: height 0.5s, opacity 0.25s;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+}
+.note:nth-child(1) {
+  bottom: 60%;
+}
+.note:nth-child(2) {
+  bottom: 40%;
+}
+.note:nth-child(3) {
+  bottom: 20%;
+}
+.note:hover {
+  cursor: pointer;
+  height: 45%;
+}
+.note__text {
+  font-family: "Sofia";
+  padding: 1rem;
+}
+.note__text p {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+@media (min-width: 300px) and (max-width: 600px) {
+  .note__text p {
+    font-size: 1.025rem;
+  }
+}
+@media (min-width: 600px) {
+  .note__text p {
+    font-size: 1.15rem;
+  }
+}
+
+.scissors {
+  cursor: url("./images/scissors.png"), pointer;
+}
+.scissors:active {
+  cursor: url("./images/scissors-active.png"), pointer;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+.choice-container {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.choice-container h1 {
+  color: #f9f9f9;
+  font-family: "Sofia", cursive;
+  font-size: min(2.5rem, 8vw);
+  margin-bottom: 2rem;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.buttons {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  padding: 0 1rem;
+}
+.buttons button {
+  padding: 1rem 2rem;
+  font-size: min(1.2rem, 5vw);
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: transform 0.3s, background-color 0.3s;
+  z-index: 1001;
+  white-space: nowrap;
+  min-width: min(100px, 30vw);
+}
+
+.yes-btn {
+  background-color: #4CAF50;
+  color: white;
+}
+.yes-btn:hover {
+  transform: scale(1.1);
+  background-color: #45a049;
+}
+
+.no-btn {
+  background-color: #f44336;
+  color: white;
+  position: relative;
+}
+.no-btn:hover {
+  background-color: #da190b;
+}
+
+.letter-content {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  z-index: 900;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease;
+}
+.letter-content.visible {
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+}
+
+.sad-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 1000;
+  animation: fadeIn 0.5s ease-in;
+}
+.sad-container h2 {
+  color: #f9f9f9;
+  font-family: "Sofia", cursive;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+.sad-container p {
+  color: #f9f9f9;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.back-btn {
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  background-color: #4CAF50;
+  color: white;
+  transition: transform 0.3s, background-color 0.3s;
+}
+.back-btn:hover {
+  transform: scale(1.1);
+  background-color: #45a049;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.celebration-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  z-index: 950;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease;
+}
+.celebration-container.visible {
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+}
+
+.flowers {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.flower {
+  position: absolute;
+  font-size: 2rem;
+  animation: fallDown 3s linear infinite;
+}
+.flower1 {
+  left: 10%;
+  animation-delay: 0s;
+}
+.flower2 {
+  left: 30%;
+  animation-delay: 0.5s;
+}
+.flower3 {
+  left: 50%;
+  animation-delay: 1s;
+}
+.flower4 {
+  left: 70%;
+  animation-delay: 1.5s;
+}
+.flower5 {
+  left: 90%;
+  animation-delay: 2s;
+}
+
+.congrats-message {
+  text-align: center;
+  z-index: 951;
+  animation: scaleIn 0.5s ease-out;
+}
+.congrats-message h2 {
+  color: #f9f9f9;
+  font-family: "Sofia", cursive;
+  font-size: min(3rem, 10vw);
+  margin-bottom: 1rem;
+}
+.congrats-message p {
+  color: #f9f9f9;
+  font-size: min(1.5rem, 6vw);
+}
+
+@keyframes fallDown {
+  0% {
+    transform: translateY(-100%) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+@keyframes scaleIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

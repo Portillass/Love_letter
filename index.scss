@@ -1,0 +1,437 @@
+// Download these images and put them in an images folder
+$scissors-cursor: url("./images/scissors.png"), pointer;
+$scissors-active-cursor: url("./images/scissors-active.png"), pointer;
+
+//Colors
+$bg: #000;
+
+$tab-bg: #f9f9f9;
+
+$f-color: #ba9872;
+$s-color: #967b5c;
+$t-color: #a38564;
+$fo-color: #f9f9f9;
+$fi-color: #e2e2e2;
+
+//Mixins
+@mixin posAbsolute($p) {
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  left: 0;
+  @if ($p == a) {
+    position: absolute;
+  } @else if($p == r) {
+    position: relative;
+  }
+}
+
+// General styles
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; // Prevent scrolling
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  background-color: $bg;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-height: 500px) {
+    margin: 25% 0 25% 0;
+  }
+}
+
+//Styles
+.envelop {
+  width: min(15rem, 90vw);
+  height: min(10rem, 60vh);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+
+  @media (min-width: 400px) and (max-width: 600px) {
+    width: min(20rem, 90vw);
+    height: min(15rem, 70vh);
+  }
+  @media (min-width: 600px) {
+    width: min(25rem, 90vw);
+    height: min(20rem, 80vh);
+  }
+  @media (min-width: 600px) and (min-height: 600px) {
+    // bottom: 20%;
+  }
+
+  &__front-paper {
+    @include posAbsolute(a);
+    border-radius: 0.7rem;
+    border: 0.35rem solid $s-color;
+    background-color: $f-color;
+    clip-path: polygon(100% 0%, 50% 70%, 0% 0%, 0% 100%, 100% 100%);
+    z-index: 300;
+  }
+
+  &__back-paper {
+    @include posAbsolute(a);
+    border-radius: 0.7rem;
+    background-color: $s-color;
+    clip-path: polygon(0% 0%, 100% 0%, 90% 100%, 0% 90%);
+    z-index: 100;
+  }
+
+  &__up-paper {
+    @include posAbsolute(r);
+    border-radius: 0.7rem;
+    background-color: $s-color;
+    z-index: 400;
+    clip-path: polygon(0% 0%, 100% 0%, 50% 81%);
+  }
+
+  &__sticker {
+    width: 100%;
+    height: 20%;
+    position: absolute;
+    margin: auto;
+    top: 30%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 400;
+    background-image: url("https://www.freepnglogos.com/uploads/heart-png/emoji-heart-33.png");
+    background-color: $fo-color;
+    border: 0.3rem solid $fi-color;
+    background-size: 2rem;
+    background-position: center;
+
+    @media (max-width: 400px) {
+      background-size: 1.2rem;
+    }
+    @media (min-width: 600px) {
+      height: 15%;
+    }
+  }
+
+  &__false-sticker {
+    width: 20%;
+    height: 20%;
+    position: absolute;
+    margin: auto;
+    top: 30%;
+    left: 80%;
+    bottom: 0;
+    right: 0;
+    z-index: 300;
+    background-image: url("https://www.freepnglogos.com/uploads/heart-png/emoji-heart-33.png");
+    background-color: $fo-color;
+    border: 0.3rem solid $fi-color;
+    background-size: 2rem;
+    background-position: center;
+
+    @media (max-width: 400px) {
+      background-size: 1.2rem;
+    }
+    @media (min-width: 600px) {
+      height: 15%;
+    }
+  }
+
+  &__content {
+    @include posAbsolute(a);
+    z-index: 200;
+  }
+}
+
+.love-notes {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.note {
+  width: 95%;
+  height: 30%;
+  background-color: $tab-bg;
+  position: absolute;
+  overflow: hidden;
+  transition: height 0.5s, opacity 0.25s;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+
+  &:nth-child(1) {
+    bottom: 60%;
+  }
+
+  &:nth-child(2) {
+    bottom: 40%;
+  }
+
+  &:nth-child(3) {
+    bottom: 20%;
+  }
+
+  &:hover {
+    cursor: pointer;
+    height: 45%;
+  }
+
+  &__text {
+    font-family: "Sofia";
+    padding: 1rem;
+
+    p {
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      text-align: center;
+
+      @media (min-width: 300px) and (max-width: 600px) {
+        font-size: 1.025rem;
+      }
+      @media (min-width: 600px) {
+        font-size: 1.15rem;
+      }
+    }
+  }
+}
+
+.scissors {
+  cursor: $scissors-cursor;
+  &:active {
+    cursor: $scissors-active-cursor;
+  }
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+// Add these new styles at the top of your existing styles
+.choice-container {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  
+  h1 {
+    color: $fo-color;
+    font-family: 'Sofia', cursive;
+    font-size: min(2.5rem, 8vw); // Responsive font size
+    margin-bottom: 2rem;
+    text-align: center;
+    padding: 0 1rem;
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  padding: 0 1rem;
+  
+  button {
+    padding: 1rem 2rem;
+    font-size: min(1.2rem, 5vw); // Responsive font size
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: transform 0.3s, background-color 0.3s;
+    z-index: 1001;
+    white-space: nowrap;
+    min-width: min(100px, 30vw); // Responsive min-width
+  }
+}
+
+.yes-btn {
+  background-color: #4CAF50;
+  color: white;
+  
+  &:hover {
+    transform: scale(1.1);
+    background-color: #45a049;
+  }
+}
+
+.no-btn {
+  background-color: #f44336;
+  color: white;
+  position: relative;
+  
+  &:hover {
+    background-color: #da190b;
+  }
+}
+
+.letter-content {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $bg;
+  z-index: 900;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease;
+  
+  &.visible {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+// Add these new styles
+.sad-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 1000;
+  animation: fadeIn 0.5s ease-in;
+  
+  h2 {
+    color: $fo-color;
+    font-family: 'Sofia', cursive;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  p {
+    color: $fo-color;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+}
+
+.back-btn {
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  background-color: #4CAF50;
+  color: white;
+  transition: transform 0.3s, background-color 0.3s;
+  
+  &:hover {
+    transform: scale(1.1);
+    background-color: #45a049;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// Add new styles for celebration
+.celebration-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $bg;
+  z-index: 950;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease;
+  
+  &.visible {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.flowers {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.flower {
+  position: absolute;
+  font-size: 2rem;
+  animation: fallDown 3s linear infinite;
+  
+  &1 { left: 10%; animation-delay: 0s; }
+  &2 { left: 30%; animation-delay: 0.5s; }
+  &3 { left: 50%; animation-delay: 1s; }
+  &4 { left: 70%; animation-delay: 1.5s; }
+  &5 { left: 90%; animation-delay: 2s; }
+}
+
+.congrats-message {
+  text-align: center;
+  z-index: 951;
+  animation: scaleIn 0.5s ease-out;
+  
+  h2 {
+    color: $fo-color;
+    font-family: 'Sofia', cursive;
+    font-size: min(3rem, 10vw);
+    margin-bottom: 1rem;
+  }
+  
+  p {
+    color: $fo-color;
+    font-size: min(1.5rem, 6vw);
+  }
+}
+
+@keyframes fallDown {
+  0% {
+    transform: translateY(-100%) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes scaleIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
